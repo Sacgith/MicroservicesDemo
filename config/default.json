@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://sacalgo:Sac78619@nodejs-intern.veuta.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}
