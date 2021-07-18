@@ -1,13 +1,19 @@
-const express=require('express');
-const connectDB=require('./config/db');
+const express = require("express");
+const connectDB = require("./config/db");
 
-const app=express();
+const app = express();
 
-//connect Database 
+//connect Database
 connectDB();
 
-app.get('/', (req, res)=>res.send('Api running ...'));
+//Init Middleware
+app.use(express.json({ extended: false }));
 
-const PORT=process.env.PORT||9000;
+app.get("/", (req, res) => res.send("Api running ..."));
 
-app.listen(PORT, ()=>console.log(`Server started on port ${PORT}`));
+//Routers
+app.use("/api/users", require("./routes/users"));
+
+const PORT = process.env.PORT || 9000;
+
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
