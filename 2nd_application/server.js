@@ -15,12 +15,12 @@ amqp.connect(uri, function (err, conn) {
       var m = count.toString();
       fs.writeFileSync("./text.txt", m);
     });
-    ch.consume(q, (data) => {
-      ch.ack(data);
-    });
+    // ch.consume(q, (data) => {
+    //   ch.ack(data);
+    // });
   });
 });
-// fs.writeFileSync('/text.txt', count);
+
 
 const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => {

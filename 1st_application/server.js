@@ -2,7 +2,6 @@ const express = require("express");
 const connectDB = require("./config/db");
 const app = express();
 const amqp = require("amqplib");
-const { check, validationResult } = require("express-validator");
 const User = require("./models/User");
 //connect Database
 connectDB();
@@ -23,16 +22,9 @@ async function connect() {
 //Init Middleware
 app.use(express.json({ extended: false }));
 
-app.post(
-  "/",
-  [
-    check("name", "Name is Required").not().isEmpty(),
-    check("age", "Age is required").not().isEmpty(),
-  ],
-  (req, res) => res.send("Api running ...")
-);
+app.post("/", (req, res) => res.send("Api running ..."));
 
-app.post("/send", [check()], async (req, res) => {
+app.post("/send", async (req, res) => {
   const { name, age, message } = req.body;
   try {
     const user = new User({
