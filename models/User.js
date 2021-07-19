@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  file: {
+  message: {
     type: String,
     default: "",
   },
